@@ -1,0 +1,20 @@
+.bz-board {
+    font-size: 12px;
+}
+
+.bz-board-item {
+    font-size: 12px;
+    padding:5px;
+    margin-top:5px;
+    margin-bottom:5px;
+    border:solid 1px #CCC;
+}
+
+.list-group-item {
+    padding:2px;
+    font-size:12px;
+}
+
+.bz-item-id {
+    float:right;
+}

@@ -1,0 +1,36 @@
+<div class="row" class="bz-board">
+    <div class="col-md-3">
+        <h4>New</h4>
+        <div class="list-group" ng-repeat="item in bug_list | filter: { sect: 'NEW' }">
+            <a href="#" class="list-group-item">
+                <p class="list-group-item-text">{{ item.title }}</p>
+                <span class="label label-default">{{ item.assignee }}</span>
+                <span class="label label-primary">{{ item.component }}</span>
+                <span class="bz-item-id">{{ item.id }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h4>Assigned</h4>
+        <div class="list-group" ng-repeat="item in bug_list | filter: { sect: 'ASSI' }">
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ item.id }}</h4>
+                <p class="list-group-item-text">{{ item.title }}</p>
+                <span class="label label-primary">{{ item.assignee }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h4>Resolved</h4>
+        <div class="list-group" ng-repeat="item in bug_list | filter: { sect: 'RESO' }">
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ item.id }}</h4>
+                <p class="list-group-item-text">{{ item.title }}</p>
+                <span class="label label-primary">{{ item.assignee }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+    </div>
+</div>
