@@ -10,22 +10,17 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "scripts.babel/chromereload.js",
-      "scripts.babel/background.js"
+      "scripts.babel/chromereload.js"
+      ,"scripts.babel/background.js"
     ]
   },
   "permissions": [
-    "tabs",
-    "http://*/*",
-    "https://*/*"
+    // None
   ],
   "content_scripts": [
     {
       "matches": [
-        //"http://*/*"
-        //,"https://*/*"
-        "https://bugs.llvm.org/*"
-        ,"https://www.khronos.org/bugzilla/*"
+        "*://*/*buglist*"
       ],
       "css": [
         "bower_components/angular/angular-csp.css"
@@ -33,19 +28,20 @@
         ,"style/main.css"
       ],
       "js": [
-        "bower_components/angular/angular-1.2.10.min.js",
-        "bower_components/jquery/dist/jquery.min.js",
-        "scripts.babel/contentscript.js"
+        "bower_components/angular/angular-1.2.10.min.js"
+        ,"bower_components/jquery/dist/jquery.min.js"
+        ,"scripts.babel/contentscript.js"
       ],
-      "html": ["templates/item.html", "templates/board.html"],
+      "html": [
+        "templates/board.html"
+      ],
       "run_at": "document_end",
       "all_frames": false
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "web_accessible_resources": [
-    "templates/item.html",
-    "templates/board.html",
-    "bower_components/angular/*"
+    "templates/board.html"
+    ,"bower_components/angular/*"
   ]
 }

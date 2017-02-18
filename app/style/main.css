@@ -11,8 +11,9 @@
 }
 
 .list-group-item {
-    padding:2px;
+    padding:5px;
     font-size:12px;
+    margin:10px 0px;
 }
 
 .bz-item-id {
