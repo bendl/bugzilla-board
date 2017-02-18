@@ -15,7 +15,7 @@ function make_bug_item(id, sect, title, desc, assignee, component) {
 }
 
 window.addEventListener("load", function() {
-  var app = angular.module('Binged', []);
+  var app = angular.module('bzb', []);
 
   var html = document.querySelector('html');
   html.setAttribute('ng-app', '');
@@ -58,14 +58,6 @@ window.addEventListener("load", function() {
   var board = document.createElement('div');
   board.setAttribute('board', '');
   viewport.prepend(board);
-
-  app.directive('myDirective', ['$sce', function($sce) {
-    return {
-      restrict: 'EA', 
-      replace: true,
-      templateUrl: $sce.trustAsResourceUrl(chrome.extension.getURL('templates/item.html'))
-    };
-  }]);
   
   app.directive('board', ['$sce', function($sce) {
     return {
@@ -75,5 +67,5 @@ window.addEventListener("load", function() {
     };
   }]);
 
-  angular.bootstrap(html, ['Binged'], []);
+  angular.bootstrap(html, ['bzb'], []);
 });
