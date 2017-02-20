@@ -10,7 +10,8 @@ function make_bug_item(id
                        ,status
                        ,res
                        ,desc
-                       ,changed)
+                       ,changed
+                       ,product_color)
 {
   this.id = id;
   this.product = product;
@@ -20,7 +21,7 @@ function make_bug_item(id
   this.res = res;
   this.desc = desc;
   this.changed = changed;
-
+  this.product_color = product_color;
   return this;
 }
 
@@ -38,6 +39,10 @@ window.addEventListener("load", function() {
     $scope.board_sections = board_sections;
   });
 
+  // 2 arrays for products and their corresponding colors
+  var product_names = [];
+  var product_colors = [];
+
   // Loop through bugs list bz_buglist
   $(".bz_buglist").find(".bz_bugitem").each(function() {
     console.log(this);
@@ -50,6 +55,24 @@ window.addEventListener("load", function() {
     var b_desc =      $(this).find(".bz_short_desc_column").first().text().trim();
     var b_changed =   $(this).find(".bz_changeddate_column").first().text().trim();
 
+    // start determining a product's color
+    var b_product_color = "blue"; 
+    if(product_names.indexOf(b_product) == -1) {
+    product_names.push(b_product);
+    while(true) {
+      var random_color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+      if(product_colors.indexOf(random_color) == -1) {
+        b_product_color = random_color;
+        product_colors.push(b_product_color);
+        break;
+      }
+    }
+    }else{
+      b_product_color = product_colors[product_names.indexOf(b_product)];
+    }
+    b_product_color = String(b_product_color);
+    // end determining a product's color
+
     var bug_item = new make_bug_item(
       b_id
       ,b_product
@@ -59,6 +82,7 @@ window.addEventListener("load", function() {
       ,b_res
       ,b_desc
       ,b_changed
+      ,b_product_color
     );
     console.log(bug_item);
 

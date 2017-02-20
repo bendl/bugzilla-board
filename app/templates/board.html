@@ -5,7 +5,7 @@
             <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { status: board }">
                 <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
                 <span class="label label-default">{{ item.status }}</span>
-                <span class="label label-primary">{{ item.product }}</span>
+                <span class="label label-primary" style="background-color:{{ item.product_color }}">{{ item.product }}</span>
                 <span class="label label-info">{{ item.component }}</span>
                 <span class="label label-default">{{ item.assignee }}</span>
                 <small>{{ item.changed }}</small>
