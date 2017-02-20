@@ -1,5 +1,5 @@
 <div class="row" class="bz-board">
-    <div class="col-sm-{{ 12/board_sections.length }} bz-column" ng-repeat="board in board_sections">
+    <div class="col-sm-{{ (12/board_sections.length) | number:0 }} bz-column" ng-repeat="board in board_sections">
         <h4>{{ board }}</h4>
         <div class="list-group">
             <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { status: board }">
