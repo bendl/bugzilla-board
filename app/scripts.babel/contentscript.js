@@ -60,16 +60,16 @@ window.addEventListener("load", function() {
     // start determining a product's color
     var b_product_color = "blue"; 
     if(product_names.indexOf(b_product) == -1) {
-    product_names.push(b_product);
-    while(true) {
-      var random_color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-      if(product_colors.indexOf(random_color) == -1) {
-        b_product_color = random_color;
-        product_colors.push(b_product_color);
-        break;
+      product_names.push(b_product);
+      while(true) {
+        var random_color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+        if(product_colors.indexOf(random_color) == -1) {
+          b_product_color = random_color;
+          product_colors.push(b_product_color);
+          break;
+        }
       }
-    }
-    }else{
+    } else {
       b_product_color = product_colors[product_names.indexOf(b_product)];
     }
     b_product_color = String(b_product_color);
