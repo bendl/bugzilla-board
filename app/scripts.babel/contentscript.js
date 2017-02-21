@@ -2,6 +2,7 @@
 
 var bug_list = [];
 var board_sections = [];
+var board_sections_assignee = [];
 
 function make_bug_item(id
                        ,product
@@ -37,6 +38,7 @@ window.addEventListener("load", function() {
   app.controller('MainController', function ($scope) {
     $scope.bug_list = bug_list;
     $scope.board_sections = board_sections;
+    $scope.board_sections_assignee = board_sections_assignee;
   });
 
   // 2 arrays for products and their corresponding colors
@@ -90,6 +92,9 @@ window.addEventListener("load", function() {
 
     if(board_sections.indexOf(b_status)  == -1) {
       board_sections.push(b_status);
+    }
+    if(board_sections_assignee.indexOf(b_assignee)  == -1) {
+      board_sections_assignee.push(b_assignee);
     }
   });
   console.log("Number of bugs: " + bug_list.length);
