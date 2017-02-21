@@ -1,5 +1,7 @@
 <div class="row" class="bz-board">
-    <div class="col-sm-{{ (12/board_sections.length) | number:0 }} bz-column" ng-repeat="board in board_sections">
+    <button ng-click="ShowByAssignee = !ShowByAssignee" class = "btn btn-success" ng-hide="ShowByAssignee"> Currently showing columns by status. Click To Show by Assignee</button>
+    <button ng-click="ShowByAssignee = !ShowByAssignee" class = "btn btn-success" ng-show="ShowByAssignee">Currently showing columns by assignee. Click To Show by Status</button>
+    <div class="col-sm-{{ (12/board_sections.length) | number:0 }} bz-column" ng-repeat="board in board_sections" ng-hide="ShowByAssignee">
         <button ng-click="showDiv = !showDiv" class = "btn btn-primary">{{ board }}</button>
         <div class="list-group" ng-hide="showDiv">
             <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { status: board }">
@@ -13,4 +15,20 @@
             </a>
         </div>
     </div>
+    <!-- Assignee -->
+    <div class="col-sm-{{ (12/board_sections.length) | number:0 }} bz-column" ng-repeat="board in board_sections" ng-show="ShowByAssignee">
+        <button ng-click="showDiv = !showDiv" class = "btn btn-primary">Assignee</button>
+        <div class="list-group" ng-hide="showDiv">
+            <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { status: board }">
+                <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
+                <span class="label label-default">{{ item.status }}</span>
+                <span class="label label-primary" style="background-color:{{ item.product_color }}">{{ item.product }}</span>
+                <span class="label label-info">{{ item.component }}</span>
+                <span class="label label-default">{{ item.assignee }}</span>
+                <small>{{ item.changed }}</small>
+                <span class="bz-item-id">#{{ item.id }}</span>
+            </a>
+        </div>
+    </div>
 </div>
+
