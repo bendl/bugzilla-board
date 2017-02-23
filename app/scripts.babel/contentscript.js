@@ -45,7 +45,7 @@ window.addEventListener("load", function() {
     $scope.bug_list = bug_list;
     $scope.board_sections = board_sections;
     $scope.board_sections_assignee = board_sections_assignee;
-
+    
     $scope.toggleScroll = function() {
       $(".bzb-list").each(function() {
         $(this).toggleClass('scroll');
@@ -81,6 +81,10 @@ window.addEventListener("load", function() {
   var product_names = [];
   var product_colors = [];
 
+  // 2 arrays for products and their corresponding colors
+  var product_names = [];
+  var product_colors = [];
+
   // Loop through bugs list bz_buglist
   $(".bz_buglist").find(".bz_bugitem").each(function() {
     console.log(this);
@@ -96,7 +100,7 @@ window.addEventListener("load", function() {
     // start determining a product's color
     var b_product_color = "blue"; 
     if(product_names.indexOf(b_product) == -1) {
-    product_names.push(b_product);
+      product_names.push(b_product);
       while(true) {
         var random_color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
         if(product_colors.indexOf(random_color) == -1) {
