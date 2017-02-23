@@ -4,6 +4,19 @@ var bug_list = [];
 var board_sections = [];
 var board_sections_assignee = [];
 
+var board_section_f = "";
+
+var board_sort = 1;
+var board_sort_list = [
+  "section in board_sections",
+  "section in board_sections_assignee",
+]
+var board_sort_str = board_sort_list[board_sort];
+
+var board_filters = [
+  { sort: '',  }
+];
+
 function make_bug_item(id
                        ,product
                        ,component
@@ -46,7 +59,35 @@ window.addEventListener("load", function() {
     $scope.board_sections = board_sections;
     $scope.board_sections_assignee = board_sections_assignee;
     $scope.toggleScroll = toggleScroll;
+    $scope.board_filter;
+
+    $scope.active_board_sections = board_sections;
+    $scope.active_board_filter = { status: '' }
+
+    var active_filter_attr = "status";
+
+    $scope.active_filter = function(a) {
+      if(board_sort == 1) {
+        return { status: a };
+      } else {
+        return { assignee: a };
+      }
+    }
+
+    $scope.toggleSort = function() {
+      board_sort ^= 1;
+
+      if(board_sort == 1){
+        $scope.active_board_sections = board_sections;
+        $scope.active_board_filter
+      } else {
+        $scope.active_board_sections = board_sections_assignee;
+      }
+
+      console.log($scope.active_board_sections);
+    }
   });
+      
 
   // 2 arrays for products and their corresponding colors
   var product_names = [];
@@ -93,7 +134,7 @@ window.addEventListener("load", function() {
       ,b_changed
       ,b_product_color
     );
-    console.log(bug_item);
+    //console.log(bug_item);
 
     bug_list.push(bug_item);
 
@@ -105,8 +146,9 @@ window.addEventListener("load", function() {
     }
   });
   console.log("Number of bugs: " + bug_list.length);
-  console.log(board_sections);
   console.log(bug_list);
+  console.log(board_sections);
+  console.log(board_sections_assignee);
 
   var board = document.createElement('div');
   board.setAttribute('board', '');

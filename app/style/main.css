@@ -29,6 +29,6 @@
 }
 
 .scroll {
-  height:75vh;
+  max-height:75vh;
   overflow:auto;
 }
