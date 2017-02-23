@@ -1,6 +1,6 @@
 <div class="row" class="bz-board">
     <div style="text-align: center;">
-        <button ng-click="toggleSort()">Sorting by bug status</button>
+        <button ng-click="toggleSort()">Sort by Assignee/Status</button>
         <button ng-click="toggleScroll()">Toggle scroll</button>
     </div>
     <br>
@@ -18,21 +18,4 @@
             </a>
         </div>
     </div>
-    <!-- Assignee https://github.com/bendl/bugzilla-board/issues/7
-    <div class="col-sm-{{ (12/board_sections_assignee.length) | number:0 }} bz-column" ng-repeat="user in board_sections_assignee" ng-show="ShowByAssignee">
-        <button ng-click="showDiv = !showDiv">{{ user }}</button>
-        <div class="list-group bzb-list scroll" ng-hide="showDiv" style="overflow:auto;">
-            <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { assignee: user }">
-                <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
-                <span class="label label-default">{{ item.status }}</span>
-                <span class="label label-primary" style="background-color:{{ item.product_color }}">{{ item.product }}</span>
-                <span class="label label-info">{{ item.component }}</span>
-                <span class="label label-default">{{ item.assignee }}</span>
-                <small>{{ item.changed }}</small>
-                <span class="bz-item-id">#{{ item.id }}</span>
-            </a>
-        </div>
-    </div>
-    -->
 </div>
-

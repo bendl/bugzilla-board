@@ -4,17 +4,10 @@ var bug_list = [];
 var board_sections = [];
 var board_sections_assignee = [];
 
-var board_section_f = "";
-
 var board_sort = 1;
 var board_sort_list = [
   "section in board_sections",
   "section in board_sections_assignee",
-]
-var board_sort_str = board_sort_list[board_sort];
-
-var board_filters = [
-  { sort: '',  }
 ];
 
 function make_bug_item(id
@@ -39,12 +32,6 @@ function make_bug_item(id
   return this;
 }
 
-function toggleScroll() {
-  $(".bzb-list").each(function() {
-    $(this).toggleClass('scroll');
-  });
-}
-
 window.addEventListener("load", function() {
   var app = angular.module('bzb', []);
 
@@ -58,8 +45,12 @@ window.addEventListener("load", function() {
     $scope.bug_list = bug_list;
     $scope.board_sections = board_sections;
     $scope.board_sections_assignee = board_sections_assignee;
-    $scope.toggleScroll = toggleScroll;
-    $scope.board_filter;
+
+    $scope.toggleScroll = function() {
+      $(".bzb-list").each(function() {
+        $(this).toggleClass('scroll');
+      });
+    };
 
     $scope.active_board_sections = board_sections;
     $scope.active_board_filter = { status: '' }
@@ -79,12 +70,9 @@ window.addEventListener("load", function() {
 
       if(board_sort == 1){
         $scope.active_board_sections = board_sections;
-        $scope.active_board_filter
       } else {
         $scope.active_board_sections = board_sections_assignee;
       }
-
-      console.log($scope.active_board_sections);
     }
   });
       
