@@ -1,16 +1,70 @@
 <div class="row" class="bz-board">
-    <div class="col-sm-{{ 12/board_sections.length }} bz-column" ng-repeat="board in board_sections">
-        <h4>{{ board }}</h4>
-        <div class="list-group">
-            <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { status: board }">
-                <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
-                <span class="label label-default">{{ item.status }}</span>
-                <span class="label label-primary">{{ item.product }}</span>
-                <span class="label label-info">{{ item.component }}</span>
-                <span class="label label-default">{{ item.assignee }}</span>
-                <small>{{ item.changed }}</small>
-                <span class="bz-item-id">#{{ item.id }}</span>
-            </a>
+    <div style="text-align: center;">
+        <button ng-click="ShowByAssignee = !ShowByAssignee" class = "btn btn-success" ng-hide="ShowByAssignee"> Currently Showing Columns By Attribute 'Status'. <br> Click To Show By 'Assignee'.</button>
+        <button ng-click="ShowByAssignee = !ShowByAssignee" class = "btn btn-success" ng-show="ShowByAssignee">Currently Showing Columns By Attribute 'Assignee'. <br> Click To Show By 'Status'.</button>
+        
+        <label class="switch">
+            <input type="checkbox" checked ng-click="ColumnsScroll = !ColumnsScroll">
+            <div class="slider"></div>
+            <div class="text"></div>
+        </label>
+    </div>
+    <br>
+    <div class="col-sm-{{ (12/board_sections.length) | number:0 }} bz-column" ng-repeat="board in board_sections" ng-hide="ShowByAssignee">
+        <button ng-click="showDiv = !showDiv" class = "btn btn-primary">{{ board }}</button>
+        <div class="list-group" ng-hide="showDiv">
+            <div ng-hide="ColumnsScroll" style="height:200px; solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { status: board }">
+                    <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
+                    <span class="label label-default">{{ item.status }}</span>
+                    <span class="label label-primary" style="background-color:{{ item.product_color }}">{{ item.product }}</span>
+                    <span class="label label-info">{{ item.component }}</span>
+                    <span class="label label-default">{{ item.assignee }}</span>
+                    <small>{{ item.changed }}</small>
+                    <span class="bz-item-id">#{{ item.id }}</span>
+                </a>
+            </div>
+            <div ng-show="ColumnsScroll" >
+                <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { status: board }">
+                    <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
+                    <span class="label label-default">{{ item.status }}</span>
+                    <span class="label label-primary" style="background-color:{{ item.product_color }}">{{ item.product }}</span>
+                    <span class="label label-info">{{ item.component }}</span>
+                    <span class="label label-default">{{ item.assignee }}</span>
+                    <small>{{ item.changed }}</small>
+                    <span class="bz-item-id">#{{ item.id }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Assignee -->
+    <div class="col-sm-{{ (12/board_sections_assignee.length) | number:0 }} bz-column" ng-repeat="board in board_sections_assignee" ng-show="ShowByAssignee">
+        <button ng-click="showDiv = !showDiv" class = "btn btn-primary">{{ board }}</button>
+        <div class="list-group" ng-hide="showDiv">
+            <div ng-hide="ColumnsScroll" style="height:200px; solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { assignee: board }">
+                    <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
+                    <span class="label label-default">{{ item.status }}</span>
+                    <span class="label label-primary" style="background-color:{{ item.product_color }}">{{ item.product }}</span>
+                    <span class="label label-info">{{ item.component }}</span>
+                    <span class="label label-default">{{ item.assignee }}</span>
+                    <small>{{ item.changed }}</small>
+                    <span class="bz-item-id">#{{ item.id }}</span>
+                </a>
+            </div>
+            <div ng-show="ColumnsScroll" >
+                <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: { assignee: board }">
+                    <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
+                    <span class="label label-default">{{ item.status }}</span>
+                    <span class="label label-primary" style="background-color:{{ item.product_color }}">{{ item.product }}</span>
+                    <span class="label label-info">{{ item.component }}</span>
+                    <span class="label label-default">{{ item.assignee }}</span>
+                    <small>{{ item.changed }}</small>
+                    <span class="bz-item-id">#{{ item.id }}</span>
+                </a>
+            </div>
+            <!--  -->
         </div>
     </div>
 </div>
+
