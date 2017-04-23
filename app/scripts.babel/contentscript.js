@@ -18,7 +18,8 @@ function make_bug_item(id
                        ,res
                        ,desc
                        ,changed
-                       ,product_color)
+                       ,product_color
+                       ,classes)
 {
   this.id = id;
   this.product = product;
@@ -29,6 +30,7 @@ function make_bug_item(id
   this.desc = desc;
   this.changed = changed;
   this.product_color = product_color;
+  this.classes = classes;
   return this;
 }
 
@@ -96,6 +98,7 @@ window.addEventListener("load", function() {
     var b_res =       $(this).find(".bz_resolution_column").first().text().trim();
     var b_desc =      $(this).find(".bz_short_desc_column").first().text().trim();
     var b_changed =   $(this).find(".bz_changeddate_column").first().text().trim();
+    var b_classes =   $(this).attr("class");
 
     // start determining a product's color
     var b_product_color = "blue"; 
@@ -125,6 +128,7 @@ window.addEventListener("load", function() {
       ,b_desc
       ,b_changed
       ,b_product_color
+      ,b_classes
     );
     //console.log(bug_item);
 

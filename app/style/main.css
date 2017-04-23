@@ -25,7 +25,9 @@
 }
 
 .bz-item-desc {
-    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .scroll {

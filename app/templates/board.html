@@ -7,7 +7,7 @@
     <div class="col-sm-{{ (12/active_board_sections.length) | number:0 }} bz-column" ng-repeat="board in active_board_sections">
         <button ng-click="showDiv = !showDiv">{{ board }}</button>
         <div class="list-group bzb-list scroll" ng-hide="showDiv" style="overflow:auto;">
-            <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item" ng-repeat="item in bug_list | filter: active_filter(board)">
+            <a href="show_bug.cgi?id={{ item.id }}" class="list-group-item {{ item.classes }}" ng-repeat="item in bug_list | filter: active_filter(board)">
                 <p class="list-group-item-text bz-item-desc">{{ item.desc }}</p>
                 <span class="label label-default">{{ item.status }}</span>
                 <span class="label label-primary" style="background-color:{{ item.product_color }}">{{ item.product }}</span>
