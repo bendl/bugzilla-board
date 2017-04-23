@@ -4,7 +4,6 @@
   "manifest_version": 2,
   "description": "Kanban-style board for Bugzilla. https://github.com/bendl/bugzilla-board",
   "icons": {
-    // Icons by https://www.behance.net/teams/JustUI
     "16": "images/_icon16.png",
     "48": "images/_icon48.png",
     "128": "images/_icon128.png"
