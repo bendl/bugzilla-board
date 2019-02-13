@@ -89,7 +89,6 @@ window.addEventListener("load", function() {
 
   // Loop through bugs list bz_buglist
   $(".bz_buglist").find(".bz_bugitem").each(function() {
-    console.log(this);
     var b_id =        $(this).first().find("a").first().text().trim();
     var b_product =   $(this).find(".bz_product_column").first().text().trim();
     var b_component = $(this).find(".bz_component_column").first().text().trim();
@@ -130,7 +129,6 @@ window.addEventListener("load", function() {
       ,b_product_color
       ,b_classes
     );
-    //console.log(bug_item);
 
     bug_list.push(bug_item);
 
@@ -141,10 +139,6 @@ window.addEventListener("load", function() {
       board_sections_assignee.push(b_assignee);
     }
   });
-  console.log("Number of bugs: " + bug_list.length);
-  console.log(bug_list);
-  console.log(board_sections);
-  console.log(board_sections_assignee);
 
   var board = document.createElement('div');
   board.setAttribute('board', '');
